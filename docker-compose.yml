@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  backend:
+    container_name: 'kupi-backend'
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    image: backend-compose-kupi
+    restart: always
+    ports:
+     - '4000:3000'
+    env_file: .env
+
+  frontend:
+    container_name: 'kupi-frontent'
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    image: frontend-compose-kupi
+    restart: always
+    ports:
+     - '5000:80'
+
+  postgres:
+    container_name: 'postgres'
+    image: postgres:alpine
+    env_file: .env
+    restart: always
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8081:8080
+
