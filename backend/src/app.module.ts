@@ -30,7 +30,7 @@ const {
       password: POSTGRES_PASSWORD,
       database: POSTGRES_DB,
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      synchronize: false,
+      synchronize: true,
     }),
     UsersModule,
     WishesModule,
